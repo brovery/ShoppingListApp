@@ -1,0 +1,21 @@
+
+<div class="container alert alert-warning">
+    <div class="row">
+        <h1>Contact Form</h1>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label for="contactName">Name</label>
+            <input type="text" class="form-control" style="width: 50%" id="contactName" placeholder="Name" ng-model="cc.name">
+        </div>
+        <div class="form-group">
+            <label for="contactEmail">Email</label>
+            <input type="email" class="form-control" id="contactEmail" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="contactPhone">Phone</label>
+            <input type="text" class="form-control" id="contactPhone" placeholder="Phone">
+        </div>
+        <button class="btn btn-primary" ng-click="cc.send()">Submit</button>
+    </div>
+</div>

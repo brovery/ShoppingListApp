@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Brandon O'Very - Bootstrap Portfolio</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>-->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <!--<![endif]-->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+</head>
+
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="Portfolio.html">
+                Brandon O'Very
+                <div class="myFace">
+                    <img id="smallFace" src="images/MyFace.jpg" title="My Face!" alt="My Face!">
+                </div>
+            </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="html/Bio.html">Bio</a>
+                </li>
+                <li>
+                    <a href="html/Gallery.html">Gallery</a>
+                </li>
+                <li>
+                    <a href="#contactMe">Contact Me</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<!-- List of graphical links to completed projects. Update as assignments are completed, including url's. -->
+<!--TODO: Change images to better indicate what the link is for.-->
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">My Work</h2>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center">
+            <a class="noLink" href="html/Resume.html">
+                <img class="img-circle img-responsive img-center" src="images/colorResume.jpg" alt="">
+                <h4 class="myWork">Interactive Resume'</h4>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center">
+            <a class="noLink" href="golfScoreCard/golfScoreCard.html">
+                <img class="img-circle img-responsive img-center" src="images/Golf.jpg" alt="">
+                <h4 class="myWork">Golf Scorecard</h4>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center">
+            <a class="noLink" href="flappyGame/flappyGame.html">
+                <img class="img-circle img-responsive img-center" src="images/perry.png" alt="">
+                <h4 class="myWork">Real-time Application</h4>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center">
+            <a class="noLink" href="../Hangman/Hangman.html">
+                <img class="img-circle img-responsive img-center" src="images/spelling.jpg-c200" alt="">
+                <h4 class="myWork">Spelling App</h4>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center">
+            <a href="shoppingListApp/index.html">
+                <img class="img-circle img-responsive img-center" src="images/shopping_cart_vector_graphics_558084.jpg" alt="">
+                <h4 class="myWork">(Angular) Shopping List App</h4>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center">
+            <img class="img-circle img-responsive img-center" src="images/colorWebsiteConstruction.jpg" alt="">
+            <h4 class="myWork">Angular App 2</h4>
+
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center">
+            <img class="img-circle img-responsive img-center" src="images/colorWebsiteConstruction.jpg" alt="">
+            <h4 class="myWork">App API Replacement</h4>
+
+        </div>
+
+        <div class="col-lg-4 col-sm-6 text-center">
+            <img class="img-circle img-responsive img-center" src="images/colorWebsiteConstruction.jpg" alt="">
+            <h4 class="myWork">Database Integration</h4>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="row">
+
+    </div>
+
+    <!-- /.container -->
+</div>
+
+
+<div class="myFooter">
+    <div class="container">
+        <footer>
+            <div class="row">
+                <form method="post">
+                    <div id="contactMe" class="row">
+                        <h3 class="text-center">Contact Me</h3>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="inputName">Name</label>
+                            <input type="text" class="form-control" id="inputName" placeholder="Name"/>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="inputEmail">Email</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="email"/>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <label for="inputComments">Comments</label>
+                            <textarea class="form-control" rows="1" id="inputComments"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-1">
+                        <br>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-lg-1">
+                    <a href="www.linkedin.com/in/brandonovery"><img class="myLinks" src="images/LinkedIn_icon.png" alt=""/></a>
+                </div>
+                <div class="col-lg-1">
+                    <a href="https://twitter.com/brovery"><img class="myLinks" src="images/Twitter-icon.png.png" alt=""/></a>
+                </div>
+                <div class="col-lg-1">
+                    <a href="https://github.com/brovery"><img class="myLinks" src="images/GitHub-Mark.png" alt=""/></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>

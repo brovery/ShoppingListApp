@@ -1,0 +1,26 @@
+h3 { margin-top: 0; }
+h4 { margin-top: 6px !important; }
+.top-margin { margin-top: 50px; }
+input[type=text], button { border: black 1px solid; }
+select {
+    width:200px !important;}
+.clicky {
+    min-width: 100px;
+}
+.ridiculous {
+    margin-right: 10px !important;
+    padding-right: 10px !important;
+}
+
+.deleted {
+    text-decoration: line-through;
+    color: #d6e9c6;
+    background-color: #9d9d9d;
+    opacity: .5;
+}
+
+.itemList {
+    font-weight: bold;
+    font-size: larger;
+    transition: all ease-in-out .5s;
+}

@@ -1,0 +1,4 @@
+<td>{{ item.name }}</td>
+<td>{{ item.qty }}</td>
+<td><input type="checkbox" ng-checked="item.status" ng-click="bc.toggleDone(item.name, item.list)"></td>
+<td><button ng-click="bc.deleteItem($index)" class="btn btn-primary">Delete</button></td>

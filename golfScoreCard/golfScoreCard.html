@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/golfScoreCard.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <!--Custom javascript-->
+    <script src="js/golfScoreCard.js" defer></script>
+
+
+
+</head>
+<body onload="onload()">
+
+<!--Start with a way to select a course? Later - for now, just have a pre-selected course.-->
+
+<div class="container" id="golfScoreCard">
+
+    <div class="myDivStyle col-lg-12 col-sm-12">
+        <!--This is the player modal that opens, allowing for the entering of player data.-->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add up to four Players</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="p1Name">Name</label>
+                                <input id="p1Name" class="form-control" type="text"/>
+                                <label for="p1Cap">Handicap</label>
+                                <input id="p1Cap" class="form-control" type="number"/>
+                                <label for="p1Tees">Tees</label>
+                                <select id="p1Tees" class="form-control"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="p2Name">Name</label>
+                                <input id="p2Name" class="form-control" type="text"/>
+                                <label for="p2Cap">Handicap</label>
+                                <input id="p2Cap" class="form-control" type="number"/>
+                                <label for="p2Tees">Tees</label>
+                                <select id="p2Tees" class="form-control"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="p3Name">Name</label>
+                                <input id="p3Name" class="form-control" type="text"/>
+                                <label for="p3Cap">Handicap</label>
+                                <input id="p3Cap" class="form-control" type="number"/>
+                                <label for="p3Tees">Tees</label>
+                                <select id="p3Tees" class="form-control"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="p4Name">Name</label>
+                                <input id="p4Name" class="form-control" type="text"/>
+                                <label for="p4Cap">Handicap</label>
+                                <input id="p4Cap" class="form-control" type="number"/>
+                                <label for="p4Tees">Tees</label>
+                                <select id="p4Tees" class="form-control"></select>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" onclick="addPlayer()" data-dismiss="modal">Submit
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 col-sm-12" id="mapContainer">
+
+        <div id="map"></div>
+
+        <div class="btn-group" id="myHamburger">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <!-- TODO: enable the edit player function, based on js TODO completion.-->
+                <!--<li><a class="myHam" data-toggle="modal" data-target="#myModal">Edit Players</a></li>-->
+                <li><a class="myHam" onclick="openScore()">Scorecard</a></li>
+                <li><a class="myHam" onclick="openScore()">Change hole</a></li>
+                <li><a class="myHam" onclick="finish()">Finish Round</a></li>
+            </ul>
+        </div>
+
+
+        <div class="fadedDiv col-lg-8 col-sm-8 col-lg-offset-2 col-sm-offset-2" id="start">
+            <!--Div that holds the page start info. This div will have:-->
+            <h1>Welcome! You have selected the <span>Augusta National Golf Club!</span></h1>
+
+            <h3>Enjoy your round!</h3>
+            <h4>To begin, enter the players below, then press Start Round.</h4>
+            <h4>Holes: <span id="holeSpan"></span></h4>
+            <h4>Par: <span id="parSpan"></span></h4>
+            <h4>length: <span id="lengthSpan"></span></h4>
+        </div>
+
+        <div class="fadedDiv col-lg-6 col-sm-6 col-lg-offset-3 col-sm-offset-3" id="holeInfo"></div>
+        <button class="myBtn btn btn-info btn-lg" id="addPlayer" data-toggle="modal" data-target="#myModal">
+            Add Players
+        </button>
+        <button class="myBtn btn btn-info btn-lg" id="startRound" onclick="startRound()">Start Round</button>
+    </div>
+
+
+
+    <!--This is the score modal, which opens with a dynamically-build score selector for each player created earlier.-->
+    <div class="modal fade" id="addScoreModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="scoreModalHead"></h4>
+                </div>
+                <div class="modal-body" id="playerScores">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" onclick="enterScore()" data-dismiss="modal">Submit
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Scorecard section. Split up into front9 & back9 for better usability on mobile devices.-->
+    <div class="scorecard col-lg-12 col-sm-12" id="scorecard">
+        <div class="col-lg-12 col-sm-12" id="f9Div">
+            <h1>Front 9</h1>
+            <h5>Click a hole number to go to that hole.</h5>
+            <table class="myTable table table-bordered" id="frontNine">
+                <tr class="myTable">
+                    <th>Hole</th>
+                    <th class="myHam" onclick="gotoHole('1')">1</th>
+                    <th class="myHam" onclick="gotoHole('2')">2</th>
+                    <th class="myHam" onclick="gotoHole('3')">3</th>
+                    <th class="myHam" onclick="gotoHole('4')">4</th>
+                    <th class="myHam" onclick="gotoHole('5')">5</th>
+                    <th class="myHam" onclick="gotoHole('6')">6</th>
+                    <th class="myHam" onclick="gotoHole('7')">7</th>
+                    <th class="myHam" onclick="gotoHole('8')">8</th>
+                    <th class="myHam" onclick="gotoHole('9')">9</th>
+                    <th>Out</th>
+                    <th class="myHam" onclick="scoreSwitch('b9')">Back 9 ></th>
+                    <th>Total</th>
+                </tr>
+                <!--javascript adds the remaining info dynamically-->
+            </table>
+        </div>
+        <div class="col-lg-12 col-sm-12" id="b9Div">
+            <h1>Back 9</h1>
+            <h5>Click a hole number to go to that hole.</h5>
+            <table class="myTable table table-bordered" id="backNine">
+                <tr class="myTable">
+                    <th class="myHam" onclick="scoreSwitch('f9')">< Front 9</th>
+                    <th>Hole</th>
+                    <th class="myHam" onclick="gotoHole('10')">10</th>
+                    <th class="myHam" onclick="gotoHole('11')">11</th>
+                    <th class="myHam" onclick="gotoHole('12')">12</th>
+                    <th class="myHam" onclick="gotoHole('13')">13</th>
+                    <th class="myHam" onclick="gotoHole('14')">14</th>
+                    <th class="myHam" onclick="gotoHole('15')">15</th>
+                    <th class="myHam" onclick="gotoHole('16')">16</th>
+                    <th class="myHam" onclick="gotoHole('17')">17</th>
+                    <th class="myHam" onclick="gotoHole('18')">18</th>
+                    <th>Out</th>
+                    <th>Total</th>
+                </tr>
+                <!--javascript adds the remaining info dynamically-->
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv1ioIKaqUyI_As5-HtTEaT59ODPlb-nE&callback=initMap"
+        async defer></script>
+
+
+</body>
+</html>
