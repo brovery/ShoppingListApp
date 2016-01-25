@@ -1,0 +1,53 @@
+<div class="alert alert-success">
+    <h3>Add a List</h3>
+    <p>Enter a list name, then click Add List to create a new list.</p><br>
+    <form class="form-inline">
+        <input type="text" ng-model="bc.listName" class="form-control" placeholder="list name"/>
+        <button ng-click="bc.addList()" class="btn btn-primary">Add List</button>
+    </form>
+    <br><br>
+    <h3>Add Items</h3>
+    The item will be added to the list selected in the Lists dropdown.
+    <form class="form-inline">
+        <input type="text" ng-model="bc.itemName" class="form-control" placeholder="add item"/>
+        <input type="text" ng-model="bc.itemQty" class="form-control" placeholder="quantity"/>
+        <button ng-click="bc.addItem()" class="btn btn-primary">+</button>
+        <button class="btn btn-warning pull-right" ng-click="bc.clearDone()">Clear Purchased</button>
+    </form>
+    <br>
+
+    <table>
+        <tr>
+            <td ng-repeat="shoppingLists in bc.shoppingLists" class="ridiculous">
+                <span ng-click="bc.changeList($index)" class="btn btn-info clicky" ng-bind="shoppingLists.listName"></span> <!--| properCase-->
+                <span class="btn btn-danger btn-xs" ng-click="bc.deleteList($index)">X</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table">
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Purchased</th>
+            <th>Delete</th>
+        </tr>
+        <tr class="itemList" ng-repeat="item in filteredItems = (bc.listItems | filter:{list:bc.currentList})" ng-class="{'deleted': item.status}"
+            td-item>
+        </tr>
+        <!--If no items in list, display this message-->
+        <tr td-nonefound ng-hide="filteredItems.length"></tr>
+    </table>
+    <br>
+
+
+
+    <!--<h3>Filters:</h3>-->
+    <!--<table class="table">-->
+        <!--<tr>-->
+            <!--<th>ALL</th>-->
+            <!--<th>TO BUY</th>-->
+            <!--<th>PURCHASED</th>-->
+        <!--</tr>-->
+    <!--</table>-->
+</div>

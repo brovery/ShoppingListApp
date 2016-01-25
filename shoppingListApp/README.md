@@ -1,2 +1,0 @@
-# ngBootSeed
-Angular Bootstrap Seed
